@@ -48,18 +48,18 @@ enum NVActivityIndicatorShape {
     func layerWith(size: CGSize, color: GenericColor) -> CALayer {
         let layer: CAShapeLayer = CAShapeLayer()
         var path = GenericBezierPath()
-        /*let lineWidth: CGFloat = 2
+        let lineWidth: CGFloat = 2
 
         switch self {
         case .circle:
-            path.addArc(withCenter: CGPoint(x: size.width / 2, y: size.height / 2),
+            path.addArc(withCenter: .init(x: size.width / 2, y: size.height / 2),
                         radius: size.width / 2,
                         startAngle: 0,
                         endAngle: CGFloat(2 * Double.pi),
                         clockwise: false)
             layer.fillColor = color.cgColor
         case .circleSemi:
-            path.addArc(withCenter: CGPoint(x: size.width / 2, y: size.height / 2),
+            path.addArc(withCenter: .init(x: size.width / 2, y: size.height / 2),
                         radius: size.width / 2,
                         startAngle: CGFloat(-Double.pi / 6),
                         endAngle: CGFloat(-5 * Double.pi / 6),
@@ -67,7 +67,7 @@ enum NVActivityIndicatorShape {
             path.close()
             layer.fillColor = color.cgColor
         case .ring:
-            path.addArc(withCenter: CGPoint(x: size.width / 2, y: size.height / 2),
+            path.addArc(withCenter: .init(x: size.width / 2, y: size.height / 2),
                         radius: size.width / 2,
                         startAngle: 0,
                         endAngle: CGFloat(2 * Double.pi),
@@ -76,16 +76,16 @@ enum NVActivityIndicatorShape {
             layer.strokeColor = color.cgColor
             layer.lineWidth = lineWidth
         case .ringTwoHalfVertical:
-            path.addArc(withCenter: CGPoint(x: size.width / 2, y: size.height / 2),
+            path.addArc(withCenter: .init(x: size.width / 2, y: size.height / 2),
                         radius: size.width / 2,
                         startAngle: CGFloat(-3 * Double.pi / 4),
                         endAngle: CGFloat(-Double.pi / 4),
                         clockwise: true)
             path.move(
-                to: CGPoint(x: size.width / 2 - size.width / 2 * cos(CGFloat(Double.pi / 4)),
-                            y: size.height / 2 + size.height / 2 * sin(CGFloat(Double.pi / 4)))
+                to: .init(x: size.width / 2 - size.width / 2 * cos(CGFloat(Double.pi / 4)),
+                          y: size.height / 2 + size.height / 2 * sin(CGFloat(Double.pi / 4)))
             )
-            path.addArc(withCenter: CGPoint(x: size.width / 2, y: size.height / 2),
+            path.addArc(withCenter: .init(x: size.width / 2, y: size.height / 2),
                         radius: size.width / 2,
                         startAngle: CGFloat(-5 * Double.pi / 4),
                         endAngle: CGFloat(-7 * Double.pi / 4),
@@ -94,16 +94,16 @@ enum NVActivityIndicatorShape {
             layer.strokeColor = color.cgColor
             layer.lineWidth = lineWidth
         case .ringTwoHalfHorizontal:
-            path.addArc(withCenter: CGPoint(x: size.width / 2, y: size.height / 2),
+            path.addArc(withCenter: .init(x: size.width / 2, y: size.height / 2),
                         radius: size.width / 2,
                         startAngle: CGFloat(3 * Double.pi / 4),
                         endAngle: CGFloat(5 * Double.pi / 4),
                         clockwise: true)
             path.move(
-                to: CGPoint(x: size.width / 2 + size.width / 2 * cos(CGFloat(Double.pi / 4)),
-                            y: size.height / 2 - size.height / 2 * sin(CGFloat(Double.pi / 4)))
+                to: .init(x: size.width / 2 + size.width / 2 * cos(CGFloat(Double.pi / 4)),
+                          y: size.height / 2 - size.height / 2 * sin(CGFloat(Double.pi / 4)))
             )
-            path.addArc(withCenter: CGPoint(x: size.width / 2, y: size.height / 2),
+            path.addArc(withCenter: .init(x: size.width / 2, y: size.height / 2),
                         radius: size.width / 2,
                         startAngle: CGFloat(-Double.pi / 4),
                         endAngle: CGFloat(Double.pi / 4),
@@ -112,7 +112,7 @@ enum NVActivityIndicatorShape {
             layer.strokeColor = color.cgColor
             layer.lineWidth = lineWidth
         case .ringThirdFour:
-            path.addArc(withCenter: CGPoint(x: size.width / 2, y: size.height / 2),
+            path.addArc(withCenter: .init(x: size.width / 2, y: size.height / 2),
                         radius: size.width / 2,
                         startAngle: CGFloat(-3 * Double.pi / 4),
                         endAngle: CGFloat(-Double.pi / 4),
@@ -121,25 +121,27 @@ enum NVActivityIndicatorShape {
             layer.strokeColor = color.cgColor
             layer.lineWidth = 2
         case .rectangle:
-            path.move(to: CGPoint(x: 0, y: 0))
-            path.addLine(to: CGPoint(x: size.width, y: 0))
-            path.addLine(to: CGPoint(x: size.width, y: size.height))
-            path.addLine(to: CGPoint(x: 0, y: size.height))
+            path.move(to: .init(x: 0, y: 0))
+            path.addLine(to: .init(x: size.width, y: 0))
+            path.addLine(to: .init(x: size.width, y: size.height))
+            path.addLine(to: .init(x: 0, y: size.height))
             layer.fillColor = color.cgColor
         case .triangle:
             let offsetY = size.height / 4
 
-            path.move(to: CGPoint(x: 0, y: size.height - offsetY))
-            path.addLine(to: CGPoint(x: size.width / 2, y: size.height / 2 - offsetY))
-            path.addLine(to: CGPoint(x: size.width, y: size.height - offsetY))
+            path.move(to: .init(x: 0, y: size.height - offsetY))
+            path.addLine(to: .init(x: size.width / 2, y: size.height / 2 - offsetY))
+            path.addLine(to: .init(x: size.width, y: size.height - offsetY))
             path.close()
             layer.fillColor = color.cgColor
         case .line:
-            path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: size.width, height: size.height),
-                                cornerRadius: size.width / 2)
+            path = GenericBezierPath(
+                roundedRect: .init(x: 0, y: 0, width: size.width, height: size.height),
+                cornerRadius: size.width / 2
+            )
             layer.fillColor = color.cgColor
         case .pacman:
-            path.addArc(withCenter: CGPoint(x: size.width / 2, y: size.height / 2),
+            path.addArc(withCenter: .init(x: size.width / 2, y: size.height / 2),
                         radius: size.width / 4,
                         startAngle: 0,
                         endAngle: CGFloat(2 * Double.pi),
@@ -148,7 +150,7 @@ enum NVActivityIndicatorShape {
             layer.strokeColor = color.cgColor
             layer.lineWidth = size.width / 2
         case .stroke:
-            path.addArc(withCenter: CGPoint(x: size.width / 2, y: size.height / 2),
+            path.addArc(withCenter: .init(x: size.width / 2, y: size.height / 2),
                         radius: size.width / 2,
                         startAngle: -(.pi / 2),
                         endAngle: .pi + .pi / 2,
@@ -159,9 +161,9 @@ enum NVActivityIndicatorShape {
         }
 
         layer.backgroundColor = nil
-        layer.path = path.cgPath
+        //layer.path = path.cgPath
         layer.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-*/
+
         return layer
     }
 }

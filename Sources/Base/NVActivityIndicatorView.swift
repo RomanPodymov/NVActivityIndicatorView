@@ -34,6 +34,35 @@ public typealias GenericView = NSView
 public typealias GenericFont = NSFont
 public typealias GenericColor = NSColor
 public typealias GenericBezierPath = NSBezierPath
+
+extension GenericBezierPath {
+    convenience init(
+        roundedRect rect: CGRect,
+        cornerRadius: CGFloat
+    ) {
+        self.init(roundedRect: rect, xRadius: cornerRadius, yRadius: cornerRadius)
+    }
+
+    func addArc(
+        withCenter center: CGPoint,
+        radius: CGFloat,
+        startAngle: CGFloat,
+        endAngle: CGFloat,
+        clockwise: Bool
+    ) {
+        appendArc(
+            withCenter: center,
+            radius: radius,
+            startAngle: startAngle,
+            endAngle: endAngle,
+            clockwise: clockwise
+        )
+    }
+
+    func addLine(to point: CGPoint) {
+        line(to: point)
+    }
+}
 #endif
 
 /**
