@@ -33,5 +33,5 @@ import AppKit
 
 // swiftlint:disable:next class_delegate_protocol
 protocol NVActivityIndicatorAnimationDelegate {
-    func setUpAnimation(in layer: CALayer, size: CGSize, color: Color)
+    func setUpAnimation(in layer: CALayer, size: CGSize, color: GenericColor)
 }

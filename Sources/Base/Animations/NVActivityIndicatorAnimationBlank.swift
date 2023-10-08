@@ -33,7 +33,7 @@ import AppKit
 
 class NVActivityIndicatorAnimationBlank: NVActivityIndicatorAnimationDelegate {
 
-    func setUpAnimation(in _: CALayer, size _: CGSize, color _: Color) {
+    func setUpAnimation(in _: CALayer, size _: CGSize, color _: GenericColor) {
         // Do nothing
     }
 }

@@ -33,7 +33,7 @@ import AppKit
 
 class NVActivityIndicatorAnimationSquareSpin: NVActivityIndicatorAnimationDelegate {
 
-    func setUpAnimation(in layer: CALayer, size: CGSize, color: Color) {
+    func setUpAnimation(in layer: CALayer, size: CGSize, color: GenericColor) {
         let duration: CFTimeInterval = 3
         let timingFunction = CAMediaTimingFunction(controlPoints: 0.09, 0.57, 0.49, 0.9)
 

@@ -33,7 +33,7 @@ import AppKit
 
 class NVActivityIndicatorAnimationBallSpinFadeLoader: NVActivityIndicatorAnimationDelegate {
 
-    func setUpAnimation(in layer: CALayer, size: CGSize, color: Color) {
+    func setUpAnimation(in layer: CALayer, size: CGSize, color: GenericColor) {
         let circleSpacing: CGFloat = -2
         let circleSize = (size.width - 4 * circleSpacing) / 5
         let x = (layer.bounds.size.width - size.width) / 2
@@ -79,7 +79,7 @@ class NVActivityIndicatorAnimationBallSpinFadeLoader: NVActivityIndicatorAnimati
         }
     }
 
-    func circleAt(angle: CGFloat, size: CGFloat, origin: CGPoint, containerSize: CGSize, color: Color) -> CALayer {
+    func circleAt(angle: CGFloat, size: CGFloat, origin: CGPoint, containerSize: CGSize, color: GenericColor) -> CALayer {
         let radius = containerSize.width / 2 - size / 2
         let circle = NVActivityIndicatorShape.circle.layerWith(size: CGSize(width: size, height: size), color: color)
         let frame = CGRect(

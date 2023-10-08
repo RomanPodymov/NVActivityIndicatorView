@@ -39,7 +39,7 @@ class NVActivityIndicatorAnimationOrbit: NVActivityIndicatorAnimationDelegate {
     var coreSize: CGFloat = 0
     var satelliteSize: CGFloat = 0
 
-    func setUpAnimation(in layer: CALayer, size: CGSize, color: Color) {
+    func setUpAnimation(in layer: CALayer, size: CGSize, color: GenericColor) {
         coreSize = size.width / (1 + satelliteCoreRatio + distanceRatio)
         satelliteSize = coreSize * satelliteCoreRatio
 
@@ -49,7 +49,7 @@ class NVActivityIndicatorAnimationOrbit: NVActivityIndicatorAnimationDelegate {
         satelliteInLayer(layer, size: size, color: color)
     }
 
-    func ring1InLayer(_ layer: CALayer, size _: CGSize, color: Color) {
+    func ring1InLayer(_ layer: CALayer, size _: CGSize, color: GenericColor) {
         // Scale animation
         let scaleAnimation = CAKeyframeAnimation(keyPath: "transform.scale")
 
@@ -87,7 +87,7 @@ class NVActivityIndicatorAnimationOrbit: NVActivityIndicatorAnimationDelegate {
         layer.addSublayer(circle)
     }
 
-    func ring2InLayer(_ layer: CALayer, size _: CGSize, color: Color) {
+    func ring2InLayer(_ layer: CALayer, size _: CGSize, color: GenericColor) {
         // Scale animation
         let scaleAnimation = CAKeyframeAnimation(keyPath: "transform.scale")
 
@@ -125,7 +125,7 @@ class NVActivityIndicatorAnimationOrbit: NVActivityIndicatorAnimationDelegate {
         layer.addSublayer(circle)
     }
 
-    func coreInLayer(_ layer: CALayer, size _: CGSize, color: Color) {
+    func coreInLayer(_ layer: CALayer, size _: CGSize, color: GenericColor) {
         let inTimingFunction = CAMediaTimingFunction(controlPoints: 0.7, 0, 1, 0.5)
         let outTimingFunction = CAMediaTimingFunction(controlPoints: 0, 0.7, 0.5, 1)
         let standByTimingFunction = CAMediaTimingFunction(name: .linear)
@@ -152,7 +152,7 @@ class NVActivityIndicatorAnimationOrbit: NVActivityIndicatorAnimationDelegate {
         layer.addSublayer(circle)
     }
 
-    func satelliteInLayer(_ layer: CALayer, size: CGSize, color: Color) {
+    func satelliteInLayer(_ layer: CALayer, size: CGSize, color: GenericColor) {
         // Rotate animation
         let rotateAnimation = CAKeyframeAnimation(keyPath: "position")
 

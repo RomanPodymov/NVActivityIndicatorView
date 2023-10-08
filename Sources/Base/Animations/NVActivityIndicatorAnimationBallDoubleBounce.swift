@@ -33,13 +33,13 @@ import AppKit
 
 class NVActivityIndicatorAnimationBallDoubleBounce: NVActivityIndicatorAnimationDelegate {
 
-    func setUpAnimation(in layer: CALayer, size: CGSize, color: Color) {
+    func setUpAnimation(in layer: CALayer, size: CGSize, color: GenericColor) {
         for index in (0...1) {
             bouncingBall(in: layer, size: size, color: color, startingAt: CACurrentMediaTime() + Double(index))
         }
     }
 
-    fileprivate func bouncingBall(in layer: CALayer, size: CGSize, color: Color, startingAt: CFTimeInterval) {
+    fileprivate func bouncingBall(in layer: CALayer, size: CGSize, color: GenericColor, startingAt: CFTimeInterval) {
         // Scale animation
         let scaleAnimation = CAKeyframeAnimation(keyPath: "transform.scale")
         scaleAnimation.duration = 2

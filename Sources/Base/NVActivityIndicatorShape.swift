@@ -45,9 +45,9 @@ enum NVActivityIndicatorShape {
     case stroke
 
     // swiftlint:disable:next cyclomatic_complexity function_body_length
-    func layerWith(size: CGSize, color: Color) -> CALayer {
+    func layerWith(size: CGSize, color: GenericColor) -> CALayer {
         let layer: CAShapeLayer = CAShapeLayer()
-        var path = BezierPath()
+        var path = GenericBezierPath()
         /*let lineWidth: CGFloat = 2
 
         switch self {

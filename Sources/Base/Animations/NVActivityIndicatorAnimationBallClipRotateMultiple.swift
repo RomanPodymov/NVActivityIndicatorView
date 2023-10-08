@@ -33,7 +33,7 @@ import AppKit
 
 class NVActivityIndicatorAnimationBallClipRotateMultiple: NVActivityIndicatorAnimationDelegate {
 
-    func setUpAnimation(in layer: CALayer, size: CGSize, color: Color) {
+    func setUpAnimation(in layer: CALayer, size: CGSize, color: GenericColor) {
         let bigCircleSize: CGFloat = size.width
         let smallCircleSize: CGFloat = size.width / 2
         let longDuration: CFTimeInterval = 1
@@ -86,7 +86,7 @@ class NVActivityIndicatorAnimationBallClipRotateMultiple: NVActivityIndicatorAni
     }
 
     // swiftlint:disable:next function_parameter_count
-    func circleOf(shape: NVActivityIndicatorShape, duration: CFTimeInterval, timingFunction: CAMediaTimingFunction, layer: CALayer, size: CGFloat, color: Color, reverse: Bool) {
+    func circleOf(shape: NVActivityIndicatorShape, duration: CFTimeInterval, timingFunction: CAMediaTimingFunction, layer: CALayer, size: CGFloat, color: GenericColor, reverse: Bool) {
         let circle = shape.layerWith(size: CGSize(width: size, height: size), color: color)
         let frame = CGRect(x: (layer.bounds.size.width - size) / 2,
                            y: (layer.bounds.size.height - size) / 2,

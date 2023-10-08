@@ -33,7 +33,7 @@ import AppKit
 
 class NVActivityIndicatorAnimationBallScaleMultiple: NVActivityIndicatorAnimationDelegate {
 
-    func setUpAnimation(in layer: CALayer, size: CGSize, color: Color) {
+    func setUpAnimation(in layer: CALayer, size: CGSize, color: GenericColor) {
         let duration: CFTimeInterval = 1
         let beginTime = CACurrentMediaTime()
         let beginTimes = [0, 0.2, 0.4]

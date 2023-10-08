@@ -33,7 +33,7 @@ import AppKit
 
 class NVActivityIndicatorAnimationBallClipRotate: NVActivityIndicatorAnimationDelegate {
 
-    func setUpAnimation(in layer: CALayer, size: CGSize, color: Color) {
+    func setUpAnimation(in layer: CALayer, size: CGSize, color: GenericColor) {
         let duration: CFTimeInterval = 0.75
 
         //    Scale animation

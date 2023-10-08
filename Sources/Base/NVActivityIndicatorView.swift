@@ -29,10 +29,12 @@
 import UIKit
 #elseif canImport(AppKit)
 import AppKit
-#endif
 
-public typealias View = NSView
-typealias Font = NSFont
+public typealias GenericView = NSView
+public typealias GenericFont = NSFont
+public typealias GenericColor = NSColor
+public typealias GenericBezierPath = NSBezierPath
+#endif
 
 /**
  Enum of animation types used for activity indicator view.
@@ -354,25 +356,25 @@ public enum NVActivityIndicatorType: CaseIterable {
 }
 
 /// Function that performs fade in/out animation.
-public typealias FadeInAnimation = (View) -> Void
+public typealias FadeInAnimation = (GenericView) -> Void
 
 /// Function that performs fade out animation.
 ///
 /// - Note: Must call the second parameter on the animation completion.
-public typealias FadeOutAnimation = (View, @escaping () -> Void) -> Void
+public typealias FadeOutAnimation = (GenericView, @escaping () -> Void) -> Void
 
 // swiftlint:disable file_length
 /// Activity indicator view with nice animations
-public final class NVActivityIndicatorView: View {
+public final class NVActivityIndicatorView: GenericView {
     // swiftlint:disable identifier_name
     /// Default type. Default value is .BallSpinFadeLoader.
     public static var DEFAULT_TYPE: NVActivityIndicatorType = .ballSpinFadeLoader
 
     /// Default color of activity indicator. Default value is UIColor.white.
-    public static var DEFAULT_COLOR = Color.white
+    public static var DEFAULT_COLOR = GenericColor.white
 
     /// Default color of text. Default value is UIColor.white.
-    public static var DEFAULT_TEXT_COLOR = Color.white
+    public static var DEFAULT_TEXT_COLOR = GenericColor.white
 
     /// Default padding. Default value is 0.
     public static var DEFAULT_PADDING: CGFloat = 0
@@ -399,10 +401,10 @@ public final class NVActivityIndicatorView: View {
     public static var DEFAULT_BLOCKER_MESSAGE_SPACING = CGFloat(8.0)
 
     /// Default font of message displayed in UI blocker. Default value is bold system font, size 20.
-    public static var DEFAULT_BLOCKER_MESSAGE_FONT = Font.boldSystemFont(ofSize: 20)
+    public static var DEFAULT_BLOCKER_MESSAGE_FONT = GenericFont.boldSystemFont(ofSize: 20)
 
     /// Default background color of UI blocker. Default value is UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
-    public static var DEFAULT_BLOCKER_BACKGROUND_COLOR = Color(red: 0, green: 0, blue: 0, alpha: 0.5)
+    public static var DEFAULT_BLOCKER_BACKGROUND_COLOR = GenericColor(red: 0, green: 0, blue: 0, alpha: 0.5)
 
     /// Default fade in animation.
     public static var DEFAULT_FADE_IN_ANIMATION: FadeInAnimation = { view in
@@ -478,7 +480,7 @@ public final class NVActivityIndicatorView: View {
 
      - returns: The activity indicator view.
      */
-    public init(frame: CGRect, type: NVActivityIndicatorType? = nil, color: Color? = nil, padding: CGFloat? = nil) {
+    public init(frame: CGRect, type: NVActivityIndicatorType? = nil, color: GenericColor? = nil, padding: CGFloat? = nil) {
         self.type = type ?? NVActivityIndicatorView.DEFAULT_TYPE
         self.color = color ?? NVActivityIndicatorView.DEFAULT_COLOR
         self.padding = padding ?? NVActivityIndicatorView.DEFAULT_PADDING
