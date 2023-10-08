@@ -27,6 +27,9 @@
 
 #if canImport(UIKit)
 import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 
 enum NVActivityIndicatorShape {
     case circle
@@ -42,10 +45,10 @@ enum NVActivityIndicatorShape {
     case stroke
 
     // swiftlint:disable:next cyclomatic_complexity function_body_length
-    func layerWith(size: CGSize, color: UIColor) -> CALayer {
+    func layerWith(size: CGSize, color: Color) -> CALayer {
         let layer: CAShapeLayer = CAShapeLayer()
-        var path: UIBezierPath = UIBezierPath()
-        let lineWidth: CGFloat = 2
+        var path = BezierPath()
+        /*let lineWidth: CGFloat = 2
 
         switch self {
         case .circle:
@@ -158,8 +161,7 @@ enum NVActivityIndicatorShape {
         layer.backgroundColor = nil
         layer.path = path.cgPath
         layer.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-
+*/
         return layer
     }
 }
-#endif

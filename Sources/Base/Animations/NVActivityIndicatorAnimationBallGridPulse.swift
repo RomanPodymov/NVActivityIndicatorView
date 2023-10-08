@@ -27,10 +27,13 @@
 
 #if canImport(UIKit)
 import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 
 class NVActivityIndicatorAnimationBallGridPulse: NVActivityIndicatorAnimationDelegate {
 
-    func setUpAnimation(in layer: CALayer, size: CGSize, color: UIColor) {
+    func setUpAnimation(in layer: CALayer, size: CGSize, color: Color) {
         let circleSpacing: CGFloat = 2
         let circleSize = (size.width - circleSpacing * 2) / 3
         let x = (layer.bounds.size.width - size.width) / 2
@@ -79,4 +82,3 @@ class NVActivityIndicatorAnimationBallGridPulse: NVActivityIndicatorAnimationDel
         }
     }
 }
-#endif

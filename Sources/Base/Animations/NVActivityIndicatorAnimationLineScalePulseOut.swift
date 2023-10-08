@@ -27,10 +27,13 @@
 
 #if canImport(UIKit)
 import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 
 class NVActivityIndicatorAnimationLineScalePulseOut: NVActivityIndicatorAnimationDelegate {
 
-    func setUpAnimation(in layer: CALayer, size: CGSize, color: UIColor) {
+    func setUpAnimation(in layer: CALayer, size: CGSize, color: Color) {
         let lineSize = size.width / 9
         let x = (layer.bounds.size.width - size.width) / 2
         let y = (layer.bounds.size.height - size.height) / 2
@@ -64,4 +67,3 @@ class NVActivityIndicatorAnimationLineScalePulseOut: NVActivityIndicatorAnimatio
         }
     }
 }
-#endif

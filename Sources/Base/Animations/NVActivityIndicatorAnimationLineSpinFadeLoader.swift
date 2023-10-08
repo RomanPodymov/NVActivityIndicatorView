@@ -27,10 +27,13 @@
 
 #if canImport(UIKit)
 import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 
 class NVActivityIndicatorAnimationLineSpinFadeLoader: NVActivityIndicatorAnimationDelegate {
 
-    func setUpAnimation(in layer: CALayer, size: CGSize, color: UIColor) {
+    func setUpAnimation(in layer: CALayer, size: CGSize, color: Color) {
         let lineSpacing: CGFloat = 2
         let lineSize = CGSize(width: (size.width - 4 * lineSpacing) / 5, height: (size.height - 2 * lineSpacing) / 3)
         let x = (layer.bounds.size.width - size.width) / 2
@@ -64,7 +67,7 @@ class NVActivityIndicatorAnimationLineSpinFadeLoader: NVActivityIndicatorAnimati
         }
     }
 
-    func lineAt(angle: CGFloat, size: CGSize, origin: CGPoint, containerSize: CGSize, color: UIColor) -> CALayer {
+    func lineAt(angle: CGFloat, size: CGSize, origin: CGPoint, containerSize: CGSize, color: Color) -> CALayer {
         let radius = containerSize.width / 2 - max(size.width, size.height) / 2
         let lineContainerSize = CGSize(width: max(size.width, size.height), height: max(size.width, size.height))
         let lineContainer = CALayer()
@@ -88,4 +91,3 @@ class NVActivityIndicatorAnimationLineSpinFadeLoader: NVActivityIndicatorAnimati
         return lineContainer
     }
 }
-#endif

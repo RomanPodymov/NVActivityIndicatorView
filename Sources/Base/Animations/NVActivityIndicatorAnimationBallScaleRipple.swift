@@ -27,10 +27,13 @@
 
 #if canImport(UIKit)
 import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 
 class NVActivityIndicatorAnimationBallScaleRipple: NVActivityIndicatorAnimationDelegate {
 
-    func setUpAnimation(in layer: CALayer, size: CGSize, color: UIColor) {
+    func setUpAnimation(in layer: CALayer, size: CGSize, color: Color) {
         let duration: CFTimeInterval = 1
         let timingFunction = CAMediaTimingFunction(controlPoints: 0.21, 0.53, 0.56, 0.8)
 
@@ -70,4 +73,3 @@ class NVActivityIndicatorAnimationBallScaleRipple: NVActivityIndicatorAnimationD
         layer.addSublayer(circle)
     }
 }
-#endif

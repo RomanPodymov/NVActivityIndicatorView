@@ -27,10 +27,13 @@
 
 #if canImport(UIKit)
 import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 
 class NVActivityIndicatorAnimationBallTrianglePath: NVActivityIndicatorAnimationDelegate {
 
-    func setUpAnimation(in layer: CALayer, size: CGSize, color: UIColor) {
+    func setUpAnimation(in layer: CALayer, size: CGSize, color: Color) {
         let circleSize = size.width / 5
         let deltaX = size.width / 2 - circleSize / 2
         let deltaY = size.height / 2 - circleSize / 2
@@ -77,9 +80,9 @@ class NVActivityIndicatorAnimationBallTrianglePath: NVActivityIndicatorAnimation
         let values = NSMutableArray(capacity: 5)
 
         for rawValue in rawValues {
-            let point = NSCoder.cgPoint(for: translateString(rawValue, deltaX: deltaX, deltaY: deltaY))
+            // let point = NSCoder.cgPoint(for: translateString(rawValue, deltaX: deltaX, deltaY: deltaY))
 
-            values.add(NSValue(caTransform3D: CATransform3DMakeTranslation(point.x, point.y, 0)))
+            // values.add(NSValue(caTransform3D: CATransform3DMakeTranslation(point.x, point.y, 0)))
         }
         animation.values = values as [AnyObject]
     }
@@ -101,4 +104,3 @@ class NVActivityIndicatorAnimationBallTrianglePath: NVActivityIndicatorAnimation
         return valueMutableString as String
     }
 }
-#endif

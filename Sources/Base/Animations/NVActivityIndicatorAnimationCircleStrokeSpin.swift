@@ -27,10 +27,13 @@
 
 #if canImport(UIKit)
 import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 
 class NVActivityIndicatorAnimationCircleStrokeSpin: NVActivityIndicatorAnimationDelegate {
 
-    func setUpAnimation(in layer: CALayer, size: CGSize, color: UIColor) {
+    func setUpAnimation(in layer: CALayer, size: CGSize, color: Color) {
         let beginTime: Double = 0.5
         let strokeStartDuration: Double = 1.2
         let strokeEndDuration: Double = 0.7
@@ -72,4 +75,3 @@ class NVActivityIndicatorAnimationCircleStrokeSpin: NVActivityIndicatorAnimation
         layer.addSublayer(circle)
     }
 }
-#endif

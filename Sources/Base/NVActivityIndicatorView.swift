@@ -27,6 +27,12 @@
 
 #if canImport(UIKit)
 import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
+
+public typealias View = NSView
+typealias Font = NSFont
 
 /**
  Enum of animation types used for activity indicator view.
@@ -348,25 +354,25 @@ public enum NVActivityIndicatorType: CaseIterable {
 }
 
 /// Function that performs fade in/out animation.
-public typealias FadeInAnimation = (UIView) -> Void
+public typealias FadeInAnimation = (View) -> Void
 
 /// Function that performs fade out animation.
 ///
 /// - Note: Must call the second parameter on the animation completion.
-public typealias FadeOutAnimation = (UIView, @escaping () -> Void) -> Void
+public typealias FadeOutAnimation = (View, @escaping () -> Void) -> Void
 
 // swiftlint:disable file_length
 /// Activity indicator view with nice animations
-public final class NVActivityIndicatorView: UIView {
+public final class NVActivityIndicatorView: View {
     // swiftlint:disable identifier_name
     /// Default type. Default value is .BallSpinFadeLoader.
     public static var DEFAULT_TYPE: NVActivityIndicatorType = .ballSpinFadeLoader
 
     /// Default color of activity indicator. Default value is UIColor.white.
-    public static var DEFAULT_COLOR = UIColor.white
+    public static var DEFAULT_COLOR = Color.white
 
     /// Default color of text. Default value is UIColor.white.
-    public static var DEFAULT_TEXT_COLOR = UIColor.white
+    public static var DEFAULT_TEXT_COLOR = Color.white
 
     /// Default padding. Default value is 0.
     public static var DEFAULT_PADDING: CGFloat = 0
@@ -393,22 +399,22 @@ public final class NVActivityIndicatorView: UIView {
     public static var DEFAULT_BLOCKER_MESSAGE_SPACING = CGFloat(8.0)
 
     /// Default font of message displayed in UI blocker. Default value is bold system font, size 20.
-    public static var DEFAULT_BLOCKER_MESSAGE_FONT = UIFont.boldSystemFont(ofSize: 20)
+    public static var DEFAULT_BLOCKER_MESSAGE_FONT = Font.boldSystemFont(ofSize: 20)
 
     /// Default background color of UI blocker. Default value is UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
-    public static var DEFAULT_BLOCKER_BACKGROUND_COLOR = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+    public static var DEFAULT_BLOCKER_BACKGROUND_COLOR = Color(red: 0, green: 0, blue: 0, alpha: 0.5)
 
     /// Default fade in animation.
     public static var DEFAULT_FADE_IN_ANIMATION: FadeInAnimation = { view in
-        view.alpha = 0
-        UIView.animate(withDuration: 0.25) {
+       /* view.alpha = 0
+        View.animate(withDuration: 0.25) {
             view.alpha = 1
-        }
+        }*/
     }
 
     /// Default fade out animation.
     public static var DEFAULT_FADE_OUT_ANIMATION: FadeOutAnimation = { (view, complete) in
-        UIView.animate(withDuration: 0.25,
+        /*View.animate(withDuration: 0.25,
                        animations: {
                         view.alpha = 0
         },
@@ -416,7 +422,7 @@ public final class NVActivityIndicatorView: UIView {
                         if completed {
                             complete()
                         }
-        })
+        })*/
     }
     // swiftlint:enable identifier_name
 
@@ -434,7 +440,7 @@ public final class NVActivityIndicatorView: UIView {
     }
 
     /// Color of activity indicator view.
-    @IBInspectable public var color: UIColor = NVActivityIndicatorView.DEFAULT_COLOR
+    @IBInspectable public var color = NVActivityIndicatorView.DEFAULT_COLOR
 
     /// Padding of activity indicator view.
     @IBInspectable public var padding: CGFloat = NVActivityIndicatorView.DEFAULT_PADDING
@@ -456,7 +462,7 @@ public final class NVActivityIndicatorView: UIView {
      */
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        backgroundColor = UIColor.clear
+        //backgroundColor = UIColor.clear
         isHidden = true
     }
 
@@ -472,7 +478,7 @@ public final class NVActivityIndicatorView: UIView {
 
      - returns: The activity indicator view.
      */
-    public init(frame: CGRect, type: NVActivityIndicatorType? = nil, color: UIColor? = nil, padding: CGFloat? = nil) {
+    public init(frame: CGRect, type: NVActivityIndicatorType? = nil, color: Color? = nil, padding: CGFloat? = nil) {
         self.type = type ?? NVActivityIndicatorView.DEFAULT_TYPE
         self.color = color ?? NVActivityIndicatorView.DEFAULT_COLOR
         self.padding = padding ?? NVActivityIndicatorView.DEFAULT_PADDING
@@ -490,7 +496,7 @@ public final class NVActivityIndicatorView: UIView {
 
      - returns: A size indicating the natural size for the receiving view based on its intrinsic properties.
      */
-    public override var intrinsicContentSize: CGSize {
+    /*public override var intrinsicContentSize: CGSize {
         return CGSize(width: bounds.width, height: bounds.height)
     }
 
@@ -501,7 +507,7 @@ public final class NVActivityIndicatorView: UIView {
                 setUpAnimation()
             }
         }
-    }
+    }*/
 
     /**
      Start animating.
@@ -512,7 +518,7 @@ public final class NVActivityIndicatorView: UIView {
         }
         isHidden = false
         isAnimating = true
-        layer.speed = 1
+        //layer.speed = 1
         setUpAnimation()
     }
 
@@ -525,7 +531,7 @@ public final class NVActivityIndicatorView: UIView {
         }
         isHidden = true
         isAnimating = false
-        layer.sublayers?.removeAll()
+        //layer.sublayers?.removeAll()
     }
 
     // MARK: Internal
@@ -547,13 +553,12 @@ public final class NVActivityIndicatorView: UIView {
     // MARK: Privates
 
     private final func setUpAnimation() {
-        let animation: NVActivityIndicatorAnimationDelegate = type.animation()
-        var animationRect = frame.inset(by: UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding))
+        /*let animation: NVActivityIndicatorAnimationDelegate = type.animation()
+        var animationRect = frame.inset(by: .init(top: padding, left: padding, bottom: padding, right: padding))
         let minEdge = min(animationRect.width, animationRect.height)
 
         layer.sublayers = nil
         animationRect.size = CGSize(width: minEdge, height: minEdge)
-        animation.setUpAnimation(in: layer, size: animationRect.size, color: color)
+        animation.setUpAnimation(in: layer, size: animationRect.size, color: color)*/
     }
 }
-#endif

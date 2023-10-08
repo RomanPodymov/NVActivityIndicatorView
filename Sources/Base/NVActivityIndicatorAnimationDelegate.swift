@@ -27,9 +27,11 @@
 
 #if canImport(UIKit)
 import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 
 // swiftlint:disable:next class_delegate_protocol
 protocol NVActivityIndicatorAnimationDelegate {
-    func setUpAnimation(in layer: CALayer, size: CGSize, color: UIColor)
+    func setUpAnimation(in layer: CALayer, size: CGSize, color: Color)
 }
-#endif

@@ -27,16 +27,19 @@
 
 #if canImport(UIKit)
 import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 
 class NVActivityIndicatorAnimationBallDoubleBounce: NVActivityIndicatorAnimationDelegate {
 
-    func setUpAnimation(in layer: CALayer, size: CGSize, color: UIColor) {
+    func setUpAnimation(in layer: CALayer, size: CGSize, color: Color) {
         for index in (0...1) {
             bouncingBall(in: layer, size: size, color: color, startingAt: CACurrentMediaTime() + Double(index))
         }
     }
 
-    fileprivate func bouncingBall(in layer: CALayer, size: CGSize, color: UIColor, startingAt: CFTimeInterval) {
+    fileprivate func bouncingBall(in layer: CALayer, size: CGSize, color: Color, startingAt: CFTimeInterval) {
         // Scale animation
         let scaleAnimation = CAKeyframeAnimation(keyPath: "transform.scale")
         scaleAnimation.duration = 2
@@ -60,4 +63,3 @@ class NVActivityIndicatorAnimationBallDoubleBounce: NVActivityIndicatorAnimation
         layer.addSublayer(circle)
     }
 }
-#endif

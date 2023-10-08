@@ -27,11 +27,14 @@
 
 #if canImport(UIKit)
 import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 import QuartzCore
 
 class NVActivityIndicatorAnimationBallZigZag: NVActivityIndicatorAnimationDelegate {
 
-    func setUpAnimation(in layer: CALayer, size: CGSize, color: UIColor) {
+    func setUpAnimation(in layer: CALayer, size: CGSize, color: Color) {
         let circleSize: CGFloat = size.width / 5
         let duration: CFTimeInterval = 0.7
         let deltaX = size.width / 2 - circleSize / 2
@@ -68,7 +71,7 @@ class NVActivityIndicatorAnimationBallZigZag: NVActivityIndicatorAnimationDelega
         circleAt(frame: frame, layer: layer, size: CGSize(width: circleSize, height: circleSize), color: color, animation: animation)
     }
 
-    func circleAt(frame: CGRect, layer: CALayer, size: CGSize, color: UIColor, animation: CAAnimation) {
+    func circleAt(frame: CGRect, layer: CALayer, size: CGSize, color: Color, animation: CAAnimation) {
         let circle = NVActivityIndicatorShape.circle.layerWith(size: size, color: color)
 
         circle.frame = frame
@@ -76,4 +79,3 @@ class NVActivityIndicatorAnimationBallZigZag: NVActivityIndicatorAnimationDelega
         layer.addSublayer(circle)
     }
 }
-#endif

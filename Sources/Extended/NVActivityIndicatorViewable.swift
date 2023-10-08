@@ -27,6 +27,9 @@
 
 #if canImport(UIKit)
 import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 import NVActivityIndicatorView
 
 /**
@@ -93,4 +96,3 @@ public extension NVActivityIndicatorViewable where Self: UIViewController {
         NVActivityIndicatorPresenter.sharedInstance.stopAnimating(fadeOutAnimation)
     }
 }
-#endif

@@ -27,11 +27,13 @@
 
 #if canImport(UIKit)
 import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 
 class NVActivityIndicatorAnimationBlank: NVActivityIndicatorAnimationDelegate {
 
-    func setUpAnimation(in _: CALayer, size _: CGSize, color _: UIColor) {
+    func setUpAnimation(in _: CALayer, size _: CGSize, color _: Color) {
         // Do nothing
     }
 }
-#endif

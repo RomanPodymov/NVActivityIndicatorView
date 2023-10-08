@@ -27,6 +27,9 @@
 
 #if canImport(UIKit)
 import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 import NVActivityIndicatorView
 
 /// Class packages information used to display UI blocker.
@@ -336,4 +339,3 @@ public final class NVActivityIndicatorPresenter {
         }
     }
 }
-#endif

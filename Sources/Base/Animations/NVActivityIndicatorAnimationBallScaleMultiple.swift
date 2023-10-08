@@ -27,10 +27,13 @@
 
 #if canImport(UIKit)
 import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 
 class NVActivityIndicatorAnimationBallScaleMultiple: NVActivityIndicatorAnimationDelegate {
 
-    func setUpAnimation(in layer: CALayer, size: CGSize, color: UIColor) {
+    func setUpAnimation(in layer: CALayer, size: CGSize, color: Color) {
         let duration: CFTimeInterval = 1
         let beginTime = CACurrentMediaTime()
         let beginTimes = [0, 0.2, 0.4]
@@ -74,4 +77,3 @@ class NVActivityIndicatorAnimationBallScaleMultiple: NVActivityIndicatorAnimatio
         }
     }
 }
-#endif

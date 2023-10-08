@@ -27,10 +27,16 @@
 
 #if canImport(UIKit)
 import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
+
+public typealias Color = NSColor
+typealias BezierPath = NSBezierPath
 
 class NVActivityIndicatorAnimationAudioEqualizer: NVActivityIndicatorAnimationDelegate {
 
-    func setUpAnimation(in layer: CALayer, size: CGSize, color: UIColor) {
+    func setUpAnimation(in layer: CALayer, size: CGSize, color: Color) {
         let lineSize = size.width / 9
         let x = (layer.bounds.size.width - lineSize * 7) / 2
         let y = (layer.bounds.size.height - size.height) / 2
@@ -49,9 +55,10 @@ class NVActivityIndicatorAnimationAudioEqualizer: NVActivityIndicatorAnimationDe
                 let heightFactor = values[j]
                 let height = size.height * CGFloat(heightFactor)
                 let point = CGPoint(x: 0, y: size.height - height)
-                let path = UIBezierPath(rect: CGRect(origin: point, size: CGSize(width: lineSize, height: height)))
+                let path = BezierPath(rect: CGRect(origin: point, size: CGSize(width: lineSize, height: height)))
 
-                animation.values?.append(path.cgPath)
+                // TODO
+                //animation.values?.append(path.cgPath)
             }
             animation.duration = duration[i]
             animation.repeatCount = HUGE
@@ -69,4 +76,3 @@ class NVActivityIndicatorAnimationAudioEqualizer: NVActivityIndicatorAnimationDe
         }
     }
 }
-#endif
